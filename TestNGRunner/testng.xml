@@ -12,12 +12,12 @@
 	</test> <!-- Test -->
 	
 	
-	<!-- <test thread-count="5" name="Test2">
+	<test thread-count="5" name="Test2">
 		<classes>
 		<class name="TestCases.CreateAnewTweetTest" />
 		
 		</classes>
-	</test> Test -->
+	</test> <!-- Test -->
 	
 		<test thread-count="5" name="Test3">
 		<classes>
