@@ -4,52 +4,16 @@
   <listeners>
     <listener class-name="Listeners.ExecutionListeners"/>
   </listeners>
-  <test thread-count="5" name="Test2(failed)">
-    <classes>
-      <class name="TestCases.CreateAnewTweetTest">
-        <methods>
-          <include name="NavigatTo"/>
-          <include name="tearDown"/>
-          <include name="LoginPageTest"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- TestCases.CreateAnewTweetTest -->
-    </classes>
-  </test> <!-- Test2(failed) -->
-  <test thread-count="5" name="Test3(failed)">
-    <classes>
-      <class name="TestCases.SearchTwitterTest">
-        <methods>
-          <include name="searchTwitter"/>
-          <include name="NavigatTo"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- TestCases.SearchTwitterTest -->
-    </classes>
-  </test> <!-- Test3(failed) -->
-  <test thread-count="5" name="Test4(failed)">
-    <classes>
-      <class name="TestCases.SendAMessageTest">
-        <methods>
-          <include name="NavigatTo"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-          <include name="LoginPageTest"/>
-        </methods>
-      </class> <!-- TestCases.SendAMessageTest -->
-    </classes>
-  </test> <!-- Test4(failed) -->
-  <test thread-count="5" name="Test5(failed)">
+  <test thread-count="5" name="Test1(failed)">
     <classes>
       <class name="TestCases.UpdateProfileTest">
         <methods>
+          <include name="updateProfile"/>
           <include name="NavigatTo"/>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="LoginPageTest"/>
         </methods>
       </class> <!-- TestCases.UpdateProfileTest -->
     </classes>
-  </test> <!-- Test5(failed) -->
+  </test> <!-- Test1(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -1,65 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-04-24T02:12:50 EDT" name="Suite" finished-at="2021-04-24T02:13:57 EDT" duration-ms="67067">
+  <suite started-at="2021-04-29T03:49:38 EDT" name="Suite" finished-at="2021-04-29T03:49:39 EDT" duration-ms="1164">
     <groups>
     </groups>
-    <test started-at="2021-04-24T02:12:50 EDT" name="Test1" finished-at="2021-04-24T02:12:59 EDT" duration-ms="9614">
-      <class name="TestCases.LoginTest">
-        <test-method is-config="true" signature="NavigatTo()[pri:0, instance:TestCases.LoginTest@2d6764b2]" started-at="2021-04-24T02:12:50 EDT" name="NavigatTo" finished-at="2021-04-24T02:12:50 EDT" duration-ms="643" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- NavigatTo -->
-        <test-method signature="LoginPageTest()[pri:0, instance:TestCases.LoginTest@2d6764b2]" started-at="2021-04-24T02:12:50 EDT" name="LoginPageTest" finished-at="2021-04-24T02:12:59 EDT" duration-ms="8928" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- LoginPageTest -->
-      </class> <!-- TestCases.LoginTest -->
-    </test> <!-- Test1 -->
-    <test started-at="2021-04-24T02:12:59 EDT" name="Test3" finished-at="2021-04-24T02:13:07 EDT" duration-ms="7960">
-      <class name="TestCases.SearchTwitterTest">
-        <test-method is-config="true" signature="NavigatTo()[pri:0, instance:TestCases.SearchTwitterTest@55dfebeb]" started-at="2021-04-24T02:12:59 EDT" name="NavigatTo" finished-at="2021-04-24T02:13:00 EDT" duration-ms="344" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- NavigatTo -->
-        <test-method signature="searchTwitter()[pri:0, instance:TestCases.SearchTwitterTest@55dfebeb]" started-at="2021-04-24T02:13:00 EDT" name="searchTwitter" finished-at="2021-04-24T02:13:07 EDT" duration-ms="7612" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- searchTwitter -->
-      </class> <!-- TestCases.SearchTwitterTest -->
-    </test> <!-- Test3 -->
-    <test started-at="2021-04-24T02:13:07 EDT" name="Test4" finished-at="2021-04-24T02:13:19 EDT" duration-ms="11839">
-      <class name="TestCases.SendAMessageTest">
-        <test-method is-config="true" signature="NavigatTo()[pri:0, instance:TestCases.SendAMessageTest@1b73be9f]" started-at="2021-04-24T02:13:07 EDT" name="NavigatTo" finished-at="2021-04-24T02:13:07 EDT" duration-ms="279" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- NavigatTo -->
-        <test-method signature="LoginPageTest()[pri:0, instance:TestCases.SendAMessageTest@1b73be9f]" started-at="2021-04-24T02:13:07 EDT" name="LoginPageTest" finished-at="2021-04-24T02:13:19 EDT" duration-ms="11556" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- LoginPageTest -->
-      </class> <!-- TestCases.SendAMessageTest -->
-    </test> <!-- Test4 -->
-    <test started-at="2021-04-24T02:13:19 EDT" name="Test5" finished-at="2021-04-24T02:13:57 EDT" duration-ms="37614">
+    <test started-at="2021-04-29T03:49:38 EDT" name="Test1" finished-at="2021-04-29T03:49:39 EDT" duration-ms="1164">
       <class name="TestCases.UpdateProfileTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:TestCases.UpdateProfileTest@62e20a76]" started-at="2021-04-24T02:12:48 EDT" name="setUp" finished-at="2021-04-24T02:12:50 EDT" duration-ms="2015" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:TestCases.UpdateProfileTest@79351f41]" started-at="2021-04-29T03:49:36 EDT" name="setUp" finished-at="2021-04-29T03:49:38 EDT" duration-ms="2442" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="NavigatTo()[pri:0, instance:TestCases.UpdateProfileTest@62e20a76]" started-at="2021-04-24T02:13:19 EDT" name="NavigatTo" finished-at="2021-04-24T02:13:19 EDT" duration-ms="305" status="PASS">
+        <test-method signature="updateProfile(java.lang.String, java.lang.String)[pri:0, instance:TestCases.UpdateProfileTest@79351f41]" started-at="2021-04-29T03:49:39 EDT" name="updateProfile" data-provider="commonDataProvider" finished-at="2021-04-29T03:49:39 EDT" duration-ms="0" status="SKIP">
+          <exception class="java.lang.RuntimeException">
+            <message>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.apache.poi.ss.usermodel.Cell.getCellType()" because "cell" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.RuntimeException: java.lang.NullPointerException: Cannot invoke "org.apache.poi.ss.usermodel.Cell.getCellType()" because "cell" is null
+at org.testng.internal.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:49)
+at org.testng.internal.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:145)
+at org.testng.internal.Parameters.handleParameters(Parameters.java:797)
+at org.testng.internal.Parameters.handleParameters(Parameters.java:740)
+at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:59)
+at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:38)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:789)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:764)
+at org.testng.TestRunner.run(TestRunner.java:585)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+at org.testng.TestNG.runSuites(TestNG.java:1069)
+at org.testng.TestNG.run(TestNG.java:1037)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.apache.poi.ss.usermodel.Cell.getCellType()" because "cell" is null
+at Utilities.readExcelData.readExcelData(readExcelData.java:47)
+at Utilities.readExcelData.getData(readExcelData.java:86)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:76)
+at org.testng.internal.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:45)
+... 25 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.RuntimeException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- NavigatTo -->
-        <test-method signature="LoginPageTest()[pri:0, instance:TestCases.UpdateProfileTest@62e20a76]" started-at="2021-04-24T02:13:19 EDT" name="LoginPageTest" finished-at="2021-04-24T02:13:57 EDT" duration-ms="37303" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- LoginPageTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.UpdateProfileTest@62e20a76]" started-at="2021-04-24T02:13:57 EDT" name="tearDown" finished-at="2021-04-24T02:13:58 EDT" duration-ms="1088" status="PASS">
+        </test-method> <!-- updateProfile -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestCases.UpdateProfileTest@79351f41]" started-at="2021-04-29T03:49:39 EDT" name="tearDown" finished-at="2021-04-29T03:49:41 EDT" duration-ms="1238" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- TestCases.UpdateProfileTest -->
-    </test> <!-- Test5 -->
+    </test> <!-- Test1 -->
   </suite> <!-- Suite -->
 </testng-results>

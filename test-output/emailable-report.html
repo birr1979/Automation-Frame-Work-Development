@@ -9,20 +9,16 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Test1</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">9,614</td><td></td><td></td></tr>
-<tr class="stripe"><td><a href="#t1">Test3</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">7,960</td><td></td><td></td></tr>
-<tr><td><a href="#t2">Test4</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">11,839</td><td></td><td></td></tr>
-<tr class="stripe"><td><a href="#t3">Test5</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">37,614</td><td></td><td></td></tr>
-<tr><th>Total</th><th class="num">4</th><th class="num">0</th><th class="num">0</th><th class="num">0</th><th class="num">67,027</th><th colspan="2"></th></tr>
+<tr><td><a href="#t0">Test1</a></td><td class="num">0</td><td class="num attn">1</td><td class="num">0</td><td class="num">0</td><td class="num">1,164</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test1 &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">TestCases.LoginTest</td><td><a href="#m0">LoginPageTest</a></td><td rowspan="1">1619244770761</td><td rowspan="1">8928</td></tr></tbody>
-<tbody id="t1"><tr><th colspan="4">Test3 &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">TestCases.SearchTwitterTest</td><td><a href="#m1">searchTwitter</a></td><td rowspan="1">1619244780065</td><td rowspan="1">7612</td></tr></tbody>
-<tbody id="t2"><tr><th colspan="4">Test4 &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">TestCases.SendAMessageTest</td><td><a href="#m2">LoginPageTest</a></td><td rowspan="1">1619244787966</td><td rowspan="1">11556</td></tr></tbody>
-<tbody id="t3"><tr><th colspan="4">Test5 &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">TestCases.UpdateProfileTest</td><td><a href="#m3">LoginPageTest</a></td><td rowspan="1">1619244799844</td><td rowspan="1">37303</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test1 &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">TestCases.UpdateProfileTest</td><td><a href="#m0">updateProfile</a></td><td rowspan="1">1619682579937</td><td rowspan="1">0</td></tr></tbody>
 </table>
-<h2>Test1</h2><h3 id="m0">TestCases.LoginTest#LoginPageTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>Test3</h2><h3 id="m1">TestCases.SearchTwitterTest#searchTwitter</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>Test4</h2><h3 id="m2">TestCases.SendAMessageTest#LoginPageTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>Test5</h2><h3 id="m3">TestCases.UpdateProfileTest#LoginPageTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Test1</h2><h3 id="m0">TestCases.UpdateProfileTest#updateProfile</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.RuntimeException: java.lang.NullPointerException: Cannot invoke &quot;org.apache.poi.ss.usermodel.Cell.getCellType()&quot; because &quot;cell&quot; is null
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.NullPointerException: Cannot invoke &quot;org.apache.poi.ss.usermodel.Cell.getCellType()&quot; because &quot;cell&quot; is null
+	at Utilities.readExcelData.readExcelData(readExcelData.java:47)
+	at Utilities.readExcelData.getData(readExcelData.java:86)
+	... 25 more
+... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
