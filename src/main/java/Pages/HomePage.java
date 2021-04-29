@@ -1,10 +1,24 @@
 package Pages;
 
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import BasePage.BasePage;
+import jdk.internal.org.jline.utils.Log;
+/**
+ * @Home Page will extend the BasePage to initialize and WebDriver ,
+ * Has WebElements initialized by the page factory which will be implemented 
+ * in this class. 
+ * @Method a method to create a twitter and post,  the test data will be provided from 
+ * excel file using common data provider
+ */
 
 public class HomePage extends BasePage {
 	
@@ -15,37 +29,21 @@ public class HomePage extends BasePage {
 	
 	//WebElements on the Login Page
 
-		@FindBy (xpath="//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[1]/div/div/div/div/div/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div")
-		static
-		WebElement createNewTweet;
+		@FindBy (xpath="//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr']")
+		static WebElement createNewTweet;
 	
-		@FindBy (xpath="//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[4]/div/div/div[2]/div/div/span/span")
+		@FindBy (xpath="//div[@data-testid='tweetButtonInline']")
 		static
 		WebElement tweetButton;
 	
-	private static void enterTweet(String tweet) {
-		createNewTweet.sendKeys(tweet);
-	}
-	
-	private static void clickOnTweet() {
-		tweetButton.click(); 
-	}
-
-	public static void createTweet(String tweet) {
-		for (int i=1;i<=4;i++)		{	
-		enterTweet("Twitte #"+i +":" +" "+tweet);
-	
-		clickOnTweet();
-		}
+	public static void createTweet(String tweet) throws InterruptedException {
+		int TweetID=(int) (1+Math.random()*100);
+		createNewTweet.clear();
+		createNewTweet.sendKeys(TweetID+"# "+tweet);
+		tweetButton.click();
+		System.out.println("Tweet Posted successfully with message= '"+tweet+"'");
 		
-		if(message="Something went wrong, but don’t fret — let’s give it another shot."
-				enterTweet("Twitte #"+i+++":" +" "+tweet);
-
-		#1. Fix Excel, issue
-		#2. Fix create twitter sequence 
-		#3. Loger and info at each steps
-		Test case failure Message at last
-	}
+			}
 	
 	
 }

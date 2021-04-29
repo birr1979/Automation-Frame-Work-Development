@@ -5,6 +5,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import BasePage.BasePage;
+/**
+ * @UpdateProfile Page will extend the BasePage to initialize and WebDriver ,
+ * Has WebElements initialized by the page factory which will be implemented 
+ * in this class. 
+ * @Method the 1st @setProfilePicture Method provide a code to set up a new profile picture and 
+ * header picture for the twitter account for the first time.
+ * 
+ * @Method the 2nd @changeProfilePicture Method will Provide a code to update an existing profile 
+ * picture and header picture, 
+ * 
+ * The test data will be provided from excel file using common data provider (File Paths for the Picture location)
+ */
+
 
 public class ProfilePage extends BasePage{
 	public ProfilePage(WebDriver driver) {
@@ -38,11 +51,11 @@ public class ProfilePage extends BasePage{
 	@FindBy(xpath="//span[contains(text(),'See profile')]")
 	WebElement seeProfile;
 
-	public ProfilePage setProfilePicture() {
+	public ProfilePage setProfilePicture(String profileImage, String headerImage) {
 		setUpProfile.click();
-		UploadProfilePicture.sendKeys("C:\\Users\\birr_\\Desktop\\twitterProfile.jpg");
+		UploadProfilePicture.sendKeys(profileImage);
 		applyChange.click();
-		pickHeaderImage.sendKeys("C:\\Users\\birr_\\Desktop\\twitterProfileHeader.jpg");
+		pickHeaderImage.sendKeys(headerImage);
 		applyChange.click();
 		applyNext.click();
 		discribeBio.sendKeys("I am passionate in automation");
@@ -51,12 +64,12 @@ public class ProfilePage extends BasePage{
 		return new ProfilePage(driver);
 	}
 
-	public ProfilePage changeProfilePicture() {
+	public ProfilePage changeProfilePicture(String profileImage, String headerImage) {
 		
 		editProfile.click();
-		UploadProfilePicture.sendKeys("C:\\Programming Related\\GIT\\FrameWorkDevelopmentExercises\\src\\test\\resources\\TwitterAccount\\ProfilePicture\\twitterProfile.jpg");
+		UploadProfilePicture.sendKeys(profileImage);
 		applyChange.click();
-		pickHeaderImage.sendKeys("C:\\Programming Related\\GIT\\FrameWorkDevelopmentExercises\\src\\test\\resources\\TwitterAccount\\ProfilePicture\\twitterProfileHeader.jpg");
+		pickHeaderImage.sendKeys(headerImage);
 		applyChange.click();
 		saveChanges.click();
 		return new ProfilePage(driver);

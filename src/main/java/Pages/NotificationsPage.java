@@ -11,6 +11,20 @@ import com.sun.tools.sjavac.Log;
 
 import BasePage.BasePage;
 
+
+
+/**
+ * @Notifications Page will extend the BasePage to initialize and WebDriver ,
+ * Has WebElements initialized by the page factory which will be implemented in this class. 
+ * 
+ * @Method @seeAllNotifications will provide a list of all notifications present in the account or can be 
+ * customized to be TOP 10 Notifications and content***
+ * 
+ *@Method @seeMentionNotifications will provide a list of all Mention notifications if there exists. 
+ *   
+ */
+
+
 public class NotificationsPage extends BasePage{
 	public NotificationsPage(WebDriver driver) {
 		super(driver);

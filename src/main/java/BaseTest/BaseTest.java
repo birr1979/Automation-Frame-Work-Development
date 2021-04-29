@@ -3,10 +3,11 @@ package BaseTest;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -16,19 +17,24 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 
 /**
- * 1. Listener
- * 2. ObjRepository
- * 3. Exceptions
- * 4. Extent Reports
+ * This Class is called a BaseTest, which will be inherited by all the test cases.
+ * It is designed to initialize WebDriver, property files, logger and  Extent reporters. 
+ * @BeforeSuite Method will load property files and configure browser
+ * @BeforeMethod Method will provide the test URL to the WebDriver.
+ * @AfterSuite Method will close the browser, create and push the Extent report to the HTML file created.
+ * @Methods Methods will provide support to the actual test cases, like logging methods, 
+ * and file name date Time formatters
  */
+
+
 public class BaseTest {
 
 	//Static Variables declared
@@ -39,9 +45,7 @@ public class BaseTest {
 	public static FileInputStream fis;
 	public static ExtentSparkReporter sparkReporter;
 	public static ExtentReports reporter;
-	public static ExtentTest test;
-//	public static ThreadLocal<ExtentTest> testReporter= new ThreadLocal<ExtentTest>();
-	public static Date date;
+	public static ExtentTest extent;
 	public static WebElement element;
 
 	@BeforeSuite
@@ -49,6 +53,8 @@ public class BaseTest {
 		//Load the  Object repository file to the project
 		try {
 			System.setProperty("webdriver.chrome.driver", "C:\\Programming Related\\GIT\\FrameWorkDevelopmentExercises\\src\\test\\resources\\TwitterAccount\\DriverExecutables\\chromedriver.exe");
+			System.setProperty("webdriver.gecko.driver", "C:\\Programming Related\\GIT\\FrameWorkDevelopmentExercises\\src\\test\\resources\\TwitterAccount\\DriverExecutables\\geckodriver.exe");
+
 			fis=new FileInputStream(PropertiesFile_Path);
 			log.info("Object Repository File Found Successfully.");
 			ObjRepo.load(fis);
@@ -76,9 +82,9 @@ public class BaseTest {
 			log.error((ObjRepo.getProperty("Browser").toUpperCase())+": Browser has encountered issue please try again!");
 			e.printStackTrace();
 		}
-		
+
 		//Extent Reporter design
-		sparkReporter= new ExtentSparkReporter("C://Programming Related//GIT//FrameWorkDevelopmentExercises//src//main//resources//ExtentReports//extentReporter.html");
+		sparkReporter= new ExtentSparkReporter("C://Programming Related//GIT//FrameWorkDevelopmentExercises//src//main//resources//ExtentReports//"+FileName()+"_extentReporter.html");
 		sparkReporter.config().setEncoding("utf-8");
 		sparkReporter.config().setDocumentTitle(ObjRepo.getProperty("DocTitle"));
 		sparkReporter.config().setReportName(ObjRepo.getProperty("Author")+ObjRepo.getProperty("Report"));
@@ -91,41 +97,61 @@ public class BaseTest {
 		reporter.setSystemInfo("Enviroment", "Automation Testing");
 		reporter.setSystemInfo("User Name", "Sendek@Pcs");	
 		reporter.setSystemInfo("Company", "PCS Consultants");	
-		
+
 	}
-	
-	
-		@BeforeMethod
-		public void NavigatTo() {
-			try {
-				driver.get(ObjRepo.getProperty("Twitter_URL"));
-				log.info("Navigated to :"+ ObjRepo.getProperty("Twitter_URL").toUpperCase());
-			} catch (Exception e) {
-				e.printStackTrace();
-				log.error("error Navigating to :"+ ObjRepo.getProperty("Twitter_URL").toUpperCase());
-			}
+
+
+	@BeforeMethod
+	public void NavigatTo() {
+		try {
+			driver.get(ObjRepo.getProperty("Twitter_URL"));
+			log.info("Navigated to :"+ ObjRepo.getProperty("Twitter_URL").toUpperCase());
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error("error Navigating to :"+ ObjRepo.getProperty("Twitter_URL").toUpperCase());
+		}
+
+
+	}
+
+
+	@AfterSuite
+	public void tearDown() {
+		try {
 			
-
+			
+			reporter.flush();
+			fis.close();
+			driver.quit();
+		} catch (IOException e) {
+			log.error("Failure to generate Extent Report File.");
+			e.printStackTrace();
 		}
-
-
-		@AfterSuite
-		public void tearDown() {
-			try {
-				driver.quit();
-				fis.close();
-				reporter.flush();
-			} catch (IOException e) {
-				log.error("Failure to generate Extent Report File. ");
-				e.printStackTrace();
-			}
-		}
-		
-		
-		  public static WebDriver getDriver() {
-		        return driver;
-		    }
-		  
-		  
-		  
 	}
+
+
+	public static WebDriver getDriver() {
+		return driver;
+	}
+
+	//Method for Extent report and screenshot file name extension
+	public static String FileName() {
+		DateFormat date= new SimpleDateFormat("dd/MM/yyyy hh.mm aa");
+		String fileName=date.format(new Date()).toString().replace("/", "_");
+		return fileName;
+	}
+
+	//methods for logging and test reporter
+
+	public void testReporterLog(String testReporterMessage) {
+		log.info(testReporterMessage);
+		extent.log(Status.INFO,testReporterMessage);
+	}
+
+	public void testReporterLogError(String testReporterMessage) {
+		log.error(testReporterMessage);
+		extent.fail(testReporterMessage);
+	}
+
+
+}

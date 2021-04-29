@@ -5,8 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import BasePage.BasePage;
-
+/**
+ * @SideBar Menu will provide access to all other pages a navigation by providing a common MENU
+ * @Method all methods will return a Page Class. 
+ * This class is instantiated in all other test cases. 
+ */
 public class SideMenu {
 
 	WebDriver driver;

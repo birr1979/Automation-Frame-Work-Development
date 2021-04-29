@@ -3,6 +3,7 @@ package Utilities;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -10,11 +11,12 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.NumberToTextConverter;
+import org.testng.annotations.DataProvider;
 
 
 public class readExcelData {
 
-	public static Object[][] readExcelData(String testDataFilePath,String sheetName) throws Exception {
+	public  static Object[][] readExcelData(String testDataFilePath,String sheetName) throws Exception {
 
 		
 		File filepath=new File(testDataFilePath);
@@ -49,13 +51,15 @@ public class readExcelData {
 				case NUMERIC: 
 					data[row][col]=NumberToTextConverter.toText(cell.getNumericCellValue());
 									break;
-//				case BLANK:
-//					data[row][col]=cell.getCellType().BLANK; //"BLANK CELL";
-//					break;
+				case BLANK:
+					data[row][col]=cell.getCellType().BLANK; //"BLANK CELL";
+					break;
 				default:
 					data[row][col]=cell.getStringCellValue();
 				}
-				System.out.println(data[row][col]);
+//				System.out.println(data[row][col]);
+				System.out.println("Test Data Received from Excel File.");
+				
 			}
 			
 		}
@@ -64,4 +68,33 @@ public class readExcelData {
 		return data;
 		
 	}
+	
+	
+	
+	//Common Data Provider 
+	  
+	  /*
+		 * Method m --> Java Reflections API
+		 * Method class returns the current method being executed by JVM
+		 * .getName() method returns the name of the current method being executed as a String
+		 */
+		
+	
+	@DataProvider(name="commonDataProvider")
+	public Object[][] getData(Method m) throws Exception{
+		readExcelData data= new readExcelData();
+		return data.readExcelData("C:\\Programming Related\\GIT\\FrameWorkDevelopmentExercises\\src\\test\\resources\\TwitterAccount\\TwitterAccountTestData.xlsx", m.getName());
+		
+		
+	}
+	
+//	public static void main(String[] args) throws Exception {
+//		readExcelData testData= new readExcelData();
+//		testData.readExcelData("C:\\Programming Related\\GIT\\FrameWorkDevelopmentExercises\\src\\test\\resources\\TwitterAccount\\TwitterAccountTestData.xlsx", "LoginTest");
+//		
+//	}
+	
+	
+	
+	
 }

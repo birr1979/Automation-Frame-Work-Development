@@ -20,52 +20,39 @@ public class ExecutionListeners extends BaseTest implements ITestListener {
 	/**
 	 * This Is a class that listens all the execution of the Test cases and
 	 * will provide information if the Test Case is Passed, Skipped or Failed.
-	 * 
+	 * NOTE: its attached to the TESTNG runner.xml file at suite level to listen all executions.  
 	 */
 
 	public static String ScreenShot;
 	public void onTestStart(ITestResult result) {
-		System.out.println("******************Test Started: "+result.getMethod().getMethodName()+"***************************");
-		
+		testReporterLog("******************Test Started: "+result.getMethod().getMethodName()+"***************************");
 	}
 
 	public void onTestSuccess(ITestResult result) {
 		String logText="<b>"+"TestCase: "+result.getMethod().getMethodName().toUpperCase()+" PASSED " +"<b>";
 		Markup m= MarkupHelper.createLabel(logText, ExtentColor.GREEN);
-		test.pass(m);
-		test.log(Status.INFO, "*** TEst PASSED ***");
-		test.log(Status.INFO, result.getMethod().getMethodName());
-			
-		System.out.println("*********************Test Sucess: "+result.getMethod().getMethodName());
-		
+		extent.pass(m);
+		extent.log(Status.INFO, "*** Test PASSED ***");
+		extent.log(Status.INFO, result.getMethod().getMethodName());
+		testReporterLog("*********************Test Sucess: "+result.getMethod().getMethodName());
 	}
 
 	public void onTestFailure(ITestResult result) {
-		/*
-		 * 1. include stackTrance
-		 * e. screenshot
-		 * 
-		 * 
-		 * */
+	
 		String testName=result.getMethod().getMethodName();
 		//convert the exception to string and store it
 		String exceptionMessage=Arrays.toString(result.getThrowable().getStackTrace());
-	
-				
-		test.info("<details open> <summary><strong> Exception Occurred: Click to view Details: </strong></summary>"+exceptionMessage+"</details>");
-		
-		
-		
-//		test.info("<details>" + "<summary>"+"Exception Occurred: Click to view Details. "+"</summary>"+exceptionMessage.replaceAll(",", "<br>")+"</details>" + "\n");
+
+		testReporterLog("<details> <summary> <h2><font size=\"4\" color=\"red\"> Exception Occurred: Click to view Details!</font> </h2> </summary> <p>"+ exceptionMessage+"</p> </details>");
 		//failure message
 		String FailureMessage="<b>"+"Test Case: "+testName.toUpperCase()+" FAILED " +"</b>";
 		Markup m= MarkupHelper.createLabel(FailureMessage, ExtentColor.RED);
-		test.fail(m);
-		test.log(Status.INFO, "TEst FAILED $$$$$$$$$$$$$$$$$");
+		extent.fail(m);
+		extent.log(Status.INFO, "### Test FAILED ###");
 
-		System.out.println("*****************Test Failed: "+result.getMethod().getMethodName());
+		testReporterLog("*****************Test Failed: "+result.getMethod().getMethodName());
 		//take the screenshot
-		
+
 		try {
 			ScreenShot = Utilities.TakeScreenShot.takeScreenShot(testName);
 		} catch (IOException e) {
@@ -73,52 +60,37 @@ public class ExecutionListeners extends BaseTest implements ITestListener {
 		}
 		//adding the screenshot
 		try {
-			test.addScreenCaptureFromPath(ScreenShot);
+			extent.addScreenCaptureFromPath(ScreenShot);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+		extent.info("<font size=\"4\" face=\"arial\" color=\"red\">   Failure ScreenShot!     </font>", MediaEntityBuilder.createScreenCaptureFromPath(ScreenShot).build());
 		
-		test.info("<b>"+"font color= red"+ "Screenshoot of failure"+"</font>"+"</b>", MediaEntityBuilder.createScreenCaptureFromPath(ScreenShot).build());
 	}
 
 	public void onTestSkipped(ITestResult result) {
-		System.out.println("_********************Test Skipped: "+result.getMethod().getMethodName());
-		
+		testReporterLog("********************Test Skipped: "+result.getMethod().getMethodName());
 	}
+
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-	System.out.println("******************8skipped with success percentage: "+result.SUCCESS_PERCENTAGE_FAILURE);
-		
+		testReporterLog("******************skipped with success percentage: "+result.SUCCESS_PERCENTAGE_FAILURE);
 	}
 
 	public void onTestFailedWithTimeout(ITestResult result) {
-		System.out.println("***********Test Timeout (failed): "+result.getMethod().getMethodName());
-		
+		testReporterLog("***********Test Timeout (failed): "+result.getMethod().getMethodName());
+
 	}
 
-	
 
 	public void onStart(ITestContext context) {
-		test= reporter.createTest(context.getName());
-		System.out.println("**************Test Suit Started: "+context.getSkippedTests());
-
-		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$ Begin TestCase Execution  $$$$$$$$$$$$$$$$$$$$$$$$$$");
-		test.info("$$$$$$$$$$$$$$$$$$$$$$$$$ Begin TestCase Execution  $$$$$$$$$$$$$$$$$$$$$$$$$$");
-
-
+		extent= reporter.createTest(context.getName());
+		testReporterLog("### Begin TestCase Execution  ###");
 	}
 
 
 	public void onFinish(ITestContext context) {
-		System.out.println("********************Test Suit Finished: "+context.getSkippedTests());
-
-		log.info("$$$$$$$$$$$$$$$$$$$$$$$$$ End TestCase Execution  $$$$$$$$$$$$$$$$$$$$$$$$$$");				
-		test.info("$$$$$$$$$$$$$$$$$$$$$$$$$ End TestCase Execution  $$$$$$$$$$$$$$$$$$$$$$$$$$");
-
-
+		testReporterLog("### End TestCase Execution  ###");				
 	}
-
-
 
 
 }

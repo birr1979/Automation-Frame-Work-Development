@@ -14,11 +14,10 @@ import Pages.SideMenu;
 
 /**
  * @author birr_
- *This class called BasePage.java. All page object classes will extend the BasePage, 
+ *This class called BasePage.java. All page object classes in this project will extend the this class, 
  *thus inheriting all the base methods.
- *BasePage class will have a constructor which takes a WebDriver object to initialize a WebDriverWait object. 
- *The constructor will also be responsible to initialize WebElements via PageFactory.
- *It also have some utility wait methods to handle the various waits such as WaitForElementToAppear.
+ *BasePage class will have a constructor which takes a WebDriver object to initialize initialize WebElements
+ *using PageFactory and WebDriverWait object to handle the various waits such as WaitForElementToAppear.
  */
 
 
@@ -29,7 +28,6 @@ public class BasePage {
 	private static int timeOut=5;
 	private static int sleepTime=100;
 	public static SideMenu menu;
-	//	public static ThreadLocal<WebDriver> dr = new ThreadLocal<WebDriver>();
 
 	public BasePage(WebDriver driver) {
 		menu=new SideMenu(driver);
